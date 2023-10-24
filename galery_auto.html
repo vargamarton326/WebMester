@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+    <style>
+        /* Gallery styles */
+        .gallery {
+            display: block;
+            text-align: center;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <div class="gallery">
+        <img id="slideshow" src="image1.jpg" alt="Image 1">
+    </div>
+
+    <script>
+        const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
+        let currentImageIndex = 0;
+        const delay = 3000; // 3 seconds (adjust as needed)
+
+        const slideshow = document.getElementById("slideshow");
+
+        function changeImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            const imagePath = images[currentImageIndex];
+            slideshow.src = imagePath;
+        }
+
+        // Start the automatic slideshow
+        setInterval(changeImage, delay);
+    </script>
+</body>
+</html>

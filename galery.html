@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+    <style>
+        /* Gallery styles */
+        .gallery {
+            display: block;
+            text-align: center;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <div class="gallery">
+        <img id="slideshow" src="image1.jpg" alt="Image 1">
+    </div>
+
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+
+    <script>
+        const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
+        let currentImageIndex = 0;
+
+        const slideshow = document.getElementById("slideshow");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        function changeImage(direction) {
+            if (direction === "next") {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+            } else if (direction === "prev") {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            }
+
+            const imagePath = images[currentImageIndex];
+            slideshow.src = imagePath;
+        }
+
+        prevBtn.addEventListener("click", () => changeImage("prev"));
+        nextBtn.addEventListener("click", () => changeImage("next"));
+    </script>
+</body>
+</html>
